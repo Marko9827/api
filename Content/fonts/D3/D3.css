@@ -1,0 +1,16 @@
+@font-face {
+    font-family: 'D3';
+    src: url('DazzleShips-Regular.woff2') format('woff2'),
+        url('DazzleShips-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'D2';
+    src: url('Zarathustra.woff2') format('woff2'), url('Zarathustra.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+}
+
+
