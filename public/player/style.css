@@ -1,0 +1,56 @@
+ /* Eronelit MPlayer V1602605223 */
+
+ * {
+     padding: 0px;
+     margin: 0px;
+     font-weight: bold !important;
+     font-weight: bold !important;
+     box-shadow: none !important;
+ }
+
+ html, body {
+     overflow: hidden;
+ }
+
+ .vjs-fullscreen-control::before {
+     display: none !important;
+ }
+
+ .vjs-fullscreen-control::before, .vjs-volume-menu-button::before {
+     font-size: 17px !important;
+     text-shadow: none !important;
+ }
+
+ #myvideo {
+     position: fixed;
+     left: 0px;
+     top: 0px;
+     bottom: 0px;
+     width: 100%;
+     height: 100%;
+ }
+
+ :root {
+     --orange: #607d8b;
+ }
+
+ .vjs-afterglow-skin .vjs-progress-holder .vjs-play-progress {
+     background: var(--orange);
+ }
+
+ .vjs-paused, .vjs-playing {
+     position: fixed !important;
+     width: 100% !important;
+     left: 0px !important;
+     top: 0px !important;
+     bottom: 0px !important;
+     height: 100% !important;
+ }
+
+ .vjs-paused::before, .vjs-playing::before {
+     position: relative !important;
+     font-size: 70px !important;
+     width: 100% !important;
+     height: auto !important;
+     top: 0px !important;
+ }

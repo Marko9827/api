@@ -5,8 +5,7 @@ const PRECACHE_URL = [
     "/",
     "/index.html",
     "/logo.svg",
-    "/app.js",
-    "/eronelit.js"
+    "/app.js"
 ];
 
 self.addEventListener('install', event => {

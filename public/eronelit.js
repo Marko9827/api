@@ -13,12 +13,27 @@ class eronelit {
             });
         }
     }
+
+    toDataURL(url, callback) {
+        var xhr = new XMLHttpRequest();
+        xhr.onload = function () {
+            var reader = new FileReader();
+            reader.onloadend = function () {
+                callback(reader.result);
+            }
+            reader.readAsDataURL(xhr.response);
+        };
+        xhr.open('GET', url);
+        xhr.responseType = 'blob';
+        xhr.send();
+    }
+
     flags() {
-        
+
         var searchParams = new URLSearchParams(window.location.search);
-        var flag_XX = searchParams.get('flag');
-        if (flag_XX !== null) {
-            var eronelit = "";
+        var flag_XX = searchParams.get('flagsd');
+     if (flag_XX !== null) {
+         var eronelit = "";
             if (window.XMLHttpRequest) {
                 eronelit = new XMLHttpRequest();
             } else {
@@ -38,7 +53,9 @@ class eronelit {
             };
             eronelit.open('GET', '/flags/' + flag_XX + '.svg', true);
             eronelit.send(null);
-        } 
+     
+    }
+     
     }
 
     run() {
