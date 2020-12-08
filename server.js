@@ -1,3 +1,5 @@
+const { keyword } = require("chalk");
+
 const http2 = require("http"),
     url = require("url"),
     path = require("path"),
@@ -19,7 +21,7 @@ const http2 = require("http"),
     compression = require('compression'),
     subdomain = require('express-subdomain'),
     router = express.Router(),
-    // sphp = require('./reger/sphp/sphp'),
+    //./reger/sphp/sphp'),
     Fastify = require('fastify'),
     createHTML = require('create-html'),
     http = require('http2'),
@@ -58,6 +60,12 @@ function time2() {
     return dateTime;
 }
 
+
+
+
+
+
+
 error_page = function (code, text_title, text_content, url2) {
     /*
     console.info("\n" + chalk.red("=>") + " File not found (" + chalk.red(code) + ") : "
@@ -67,6 +75,8 @@ error_page = function (code, text_title, text_content, url2) {
 <html lang=en>
   <meta charset=utf-8>
   <meta name=viewport content="initial-scale=1, minimum-scale=1, width=device-width">
+  <meta name="robots" content="noindex" />
+
   <title>Error 404 (Not Found) ${url2}</title>
     <meta name="theme-color" content="#607d8b" />
   <style> * { color: #607D8B; /* pointer-events:none; user-select:none; */ margin: 0; padding: 0 } html, code { font: 15px/22px arial, sans-serif } html { background: #fff; color: #222; padding: 15px } body { margin: 7% auto 0; max-width: 390px; min-height: 180px; padding: 30px 0 15px } *>body { padding-right: 205px } p { margin: 11px 0 22px; overflow: hidden } ins {     color: #607D8B;
@@ -102,20 +112,114 @@ error_page = function (code, text_title, text_content, url2) {
 
 try {
 
-    // app.use(sphp.express('eronelit'));
+
+    var apikeys = [
+        "30242-93420-462834-5034348234324",
+        "3242340242342--532",
+        "30242"];
 
     app.use(cookieParser());
     app.use(csrfMiddleware);
     app.use(compression());
     app.use(express.static('public'));
-    app.use(favicon(path.join(__dirname, 'accets/', 'ico.png')));
-    app.get('/', function (req, res) {
+    app.use(favicon(path.join(__dirname, 'public', 'logo.svg')));
+    /* app.get('/rest/player', function (req, res, next) {
+         res.set('Connection', 'close');
+         var test_source = req.query.datasource;
+         var test_url = req.query.url;
+         if (test_source !== undefined) {
+             if (test_source == "js") {
+                 res.sendFile(path.join(__dirname + "/public/player/af.js"));
+             } else if (test_source == "css") {
+                 res.sendFile(path.join(__dirname + "/public/player/style.css"));
+ 
+             } else { }
+         } else if (test_url !== undefined) {
+             if (test_url !== ""){
+             res.send(`
+               <!DOCTYPE html>
+               <html>
+               <head>
+               <meta name="robots" content="noindex" />
+                  <link rel="stylesheet" href="/rest/player?datasource=css" />
+                  <script type="text/javascript" src="/rest/player?datasource=js"></script>
+               </head>
+               <body oncontextmenu="return false;" ondragstart="return false;" onselect="return false;">
+     <video controlslist="nodownload" class="afterglow" id="myvideo" width="1280" height="720">
+         <source type="video/mp4" src="${test_url}" />
+     </video>
+     </body></html>
+     `); } else {
+         res.redirect("/");
+     }
+         } else {
+             res.redirect("/");
+         }
+     });*/
+    app.get('/rest', function (req, res, next) {
+        res.set('Connection', 'close');
+        var flag_q = req.query.flag;
+        var key_q = "";
+
+        var test_source = req.query.datasource;
+        var test_url = req.query.url;
+
+        key_q = req.query.key;
+        if (flag_q !== undefined) {
+            if (apikeys.includes(key_q)) {
+                res.sendFile(path.join(__dirname + "/public/flags/" + flag_q + ".svg"));
+            } else {
+                res.redirect("/");
+            }
+        } if (test_source !== undefined) {
+            if (test_source == "js") {
+                res.sendFile(path.join(__dirname + "/public/player/af.js"));
+            } else if (test_source == "css") {
+                res.sendFile(path.join(__dirname + "/public/player/style.css"));
+
+            } else { }
+        } else if (test_url !== undefined) {
+            if (test_url !== "") {
+                res.send(`
+              <!DOCTYPE html>
+              <html>
+              <head>
+              <meta name="robots" content="noindex" />
+                 <link rel="stylesheet" href="/rest?datasource=css" />
+                 <script type="text/javascript" src="/rest?datasource=js"></script>
+              </head>
+              <body oncontextmenu="return false;" ondragstart="return false;" onselect="return false;">
+    <video controlslist="nodownload" class="afterglow" id="myvideo" width="1280" height="720">
+        <source type="video/mp4" src="${test_url}" />
+    </video>
+    </body></html>
+    `);
+            } else {
+                res.redirect("/");
+            }
+        }
+    });
+
+    /* app.get('/', function (req, res) {
+
+        console.log("R");
+        var req_flag = req.query.flag;
+        if (req_flag !== "") {
+            if (req_flag !== null) {
+                res.set("content-type", "image/svg+xml");
+                res.sendFile("public/flags/" + req_flag + ".svg");
+                console.log(req_flag);
+            }
+        }
+
         res.set('server', 'Eronelit JGA');
         res.set('X-Powered-By', 'eronelit.com');
         res.set('Access-Control-Allow-Origin', '*');
         res.set('Connection', 'close');
         res.set('Referrer-Policy', 'strict-origin-when-cross-origin');
     });
+
+
 
     /*
    app.use(function(err,req,res,next){
@@ -124,12 +228,17 @@ try {
      res.status(500).send(console.info("\n" + chalk.yellow("=>") + " Internal server error (" + chalk.yellow(500) + ") : " + chalk.yellow(url) + " | Time: " + time2()));
   
    }); */
+
+
     app.get('*', function (req, res) {
+
         var url = req.url;
         res.set('server', 'Eronelit JGA');
         res.set('X-Powered-By', 'eronelit.com');
         res.set('Connection', 'close');
+        res.status(200).send(
 
+        );
 
 
         //f  if (req.statusCode == 400) {
@@ -152,10 +261,9 @@ try {
     // console.info("\n" + chalk.bgRedBright("=>") + " Server inside ERROR !!! (" + chalk.red(code) + ") : " + chalk.bgRedBright(url2) + " | Time: " + time2());
 }
 
-var eronelit2 = require('./public/app/js/eronelit');
 
 
-
+module.exports = router
 
 var GITHUB = "https://github.com/marko9827";
 var LINKEDIN = "https://www.linkedin.com/in/markonikolic98/";

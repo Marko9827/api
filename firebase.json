@@ -55,15 +55,9 @@
             {
                 "source": "**",
                 "destination": "/index.html"
-            },
-            {
-                "source": "**/?flags=*",
-                "headers": [
-                    {
-                        "content-type": "image/svg+xml",
-                        "code": 200
-                    }
-                ]
+            },{
+                "source": "**",
+                "function": "api"
             }
         ]
     }
