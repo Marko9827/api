@@ -1,0 +1,63 @@
+{
+    "short_name": "Eronelit",
+    "name": "Eronelit API",
+    "description": "eronelit.com",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "/sw/124.svg",
+            "type": "image/svg+xml",
+            "sizes": "124x124"
+        },
+        {
+            "src": "/sw/32.svg",
+            "type": "image/svg+xml",
+            "sizes": "32x32"
+        },
+        {
+            "src": "/sw/512.svg",
+            "type": "image/svg+xml",
+            "sizes": "512x512"
+        },
+        {
+            "src": "/sw/144.svg",
+            "type": "image/svg+xml",
+            "sizes": "144x144"
+        },
+        {
+            "src": "/sw/124.svg",
+            "type": "image/svg+xml",
+            "sizes": "124x124"
+        },
+        {
+            "src": "/sw/196.svg",
+            "type": "image/svg+xml",
+            "sizes": "196x196",
+            "purpose": "any"
+        },
+        {
+            "src": "/sw/196.svg",
+            "type": "image/svg+xml",
+            "sizes": "196x196",
+            "purpose": "maskable"
+        }
+    ],
+    "start_url": "/",
+    "background_color": "#fff",
+    "display": "standalone",
+    "theme_color": "#fff",
+    "shortcuts": [
+        {
+            "name": "Eronelit",
+            "short_name": "Eronelit News",
+            "description": "View Eronelit news for today",
+            "url": "?today=source&code=pwa",
+            "icons": [
+                {
+                    "src": "/sw/124.svg",
+                    "sizes": "124x124"
+                }
+            ]
+        }
+    ]
+}

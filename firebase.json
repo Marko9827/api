@@ -1,0 +1,70 @@
+{
+    "hosting": {
+        "site": "eronelit-api",
+        "public": "public",
+        "ignore": [
+            "firebase.json",
+            "**/.*",
+            "**/node_modules/**"
+        ],
+        "headers": [
+            {
+                "source": "**/*.@(eot|html|otf|ttf|ttc|woff|font.css)",
+                "headers": [
+                    {
+                        "key": "Cache-Control",
+                        "value": "max-age=7200"
+                    },
+                    {
+                        "key": "Content-Encoding",
+                        "value": "gzip"
+                    },
+                    {
+                        "key": "Connection",
+                        "value": "close"
+                    },
+                    {
+                        "key": "content-type",
+                        "value": "text/html; charset=UTF-8"
+                    }
+                ]
+            },
+            {
+                "source": "**/?flags=*",
+                "headers": [
+                    {
+                        "key": "Cache-Control",
+                        "value": "max-age=7200"
+                    },
+                    {
+                        "key": "Content-Encoding",
+                        "value": "gzip"
+                    },
+                    {
+                        "key": "Connection",
+                        "value": "close"
+                    },
+                    {
+                        "key": "content-type",
+                        "value": "image/svg+xml; charset=UTF-8"
+                    }
+                ]
+            }
+        ],
+        "rewrites": [
+            {
+                "source": "**",
+                "destination": "/index.html"
+            },
+            {
+                "source": "**/?flags=*",
+                "headers": [
+                    {
+                        "content-type": "image/svg+xml",
+                        "code": 200
+                    }
+                ]
+            }
+        ]
+    }
+}

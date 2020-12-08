@@ -1,0 +1,27 @@
+{
+    "api": [
+        {
+            "shema": [
+                {
+                    "type": "flags",
+                    "IO": "XX"
+                }
+            ],
+            "hosting": [
+                {
+                    "image": "xml+svg"
+                }
+            ]
+        },
+        {
+            "key": "30242-93420-462834-5034348234324",
+            "val": "3-4-XX"
+        },{
+        "type":[{
+            "api":"package",
+            "source": "?flags=**",
+            "val":"3-4-XX"
+        }]
+        }
+    ]
+}
